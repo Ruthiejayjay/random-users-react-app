@@ -3,7 +3,6 @@ import { useLocation, Link } from "react-router-dom"
 const User = () => {
     const location = useLocation();
     const state = location.state;
-    console.log(state);
 
     return (
         <div className="py-16 bg-gradient-to-br from-gray-50 to-gray-200">
