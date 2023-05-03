@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from "axios";
 
 const Main = () => {
@@ -6,17 +7,16 @@ const Main = () => {
     const apiUrl = 'https://randomuser.me/api/?results=50';
 
     useEffect(() => {
-        getUser()
+        getUsers()
     }, [])
 
-    const getUser = async () => {
+    const getUsers = async () => {
         const response = await axios.get(apiUrl)
         .then((response)=> {
             const data = response.data.results
             setRandomUsers(data);
         })
     }
-
     return (
         <div className="mx-auto my-auto w-full">
             <div className="relative mt-20 mb-20 bg-white">
@@ -50,7 +50,7 @@ const Main = () => {
                                             {randomUsers.map((item, index) => {
                                                 return(
                                                     <tr>
-                                                    <td className="px-4 py-4 text-sm text-black hover:text-base whitespace-nowrap"><a href="#">{item.name.first} { item.name.last}</a></td>
+                                                    <td className="px-4 py-4 text-sm text-black hover:text-base whitespace-nowrap"><Link to="/user" state={item}>{item.name.first} { item.name.last}</Link></td>
                                                     <td className="px-4 py-4 text-sm text-black whitespace-nowrap">
                                                         <p className="text-xs font-normal text-black">{item.email}</p>
                                                     </td>
@@ -68,7 +68,7 @@ const Main = () => {
                     </div>
                     <div className="flex items-center justify-between mt-6">
                         <a href="#" className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-gray-100 border rounded-md gap-x-2 hover:bg-gray-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-5 h-5 rtl:-scale-x-100">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                             </svg>
 
@@ -92,7 +92,7 @@ const Main = () => {
                                 Next
                             </span>
 
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-5 h-5 rtl:-scale-x-100">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                             </svg>
                         </a>
