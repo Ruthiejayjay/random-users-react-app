@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import Loader from './Loader';
+import './Users.css'
 
 const Main = () => {
     const [randomUsers, setRandomUsers] = useState([]);
@@ -30,7 +31,7 @@ const Main = () => {
 
             <div className="flex justify-center items-center">
                 {isLoading ? <Loader /> :
-                    <div className="relative mt-20 mb-20 bg-white">
+                    <div className="relative mt-20 mb-20 bg-white sm:mx-1" style={{ maxWidth: "100%", padding: '8px' }}>
                         <div className="flex justify-between">
                             <h2 className="text-cyan-700 text-xl font-bold uppercase">Users</h2>
                             <div className='flex'>
@@ -47,9 +48,9 @@ const Main = () => {
                                 </form>
                             </div>
                         </div>
-                        <section className="mt-4 flex table">
+                        <section className="mt-4 flex-col flex">
                             <div className="flex flex-col">
-                                <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                     <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                                         <div className="overflow-hidden shadow md:rounded-lg">
                                             <table className="min-w-full divide-y divide-gray-200">
