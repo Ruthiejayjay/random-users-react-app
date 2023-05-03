@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import Loader from './Loader';
-import './Users.css'
 
 const Main = () => {
     const [randomUsers, setRandomUsers] = useState([]);
